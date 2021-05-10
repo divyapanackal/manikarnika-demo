@@ -107,7 +107,7 @@
     max-width: 260px;
     margin-bottom: 35px;
   }
-  .container{
+  .container {
     padding: 0 20px;
   }
 }
@@ -197,6 +197,9 @@
   display: inline-block;
   text-transform: uppercase;
   letter-spacing: 1px;
+  &:hover {
+    color: gold;
+  }
 }
 .cented-box {
   text-align: center;
@@ -204,6 +207,9 @@
 }
 #banner {
   height: 100vh;
+  @media screen and (max-width: 990px) {
+    height: 50vh;
+  }
   img {
     height: 100%;
     object-fit: cover;
@@ -224,6 +230,7 @@
     align-content: center;
     align-items: center;
     height: 100%;
+    padding: 0 20px;
     img {
       max-width: 250px;
     }
@@ -262,7 +269,7 @@
 .three {
   width: 45px;
   height: 5px;
-  background: white;
+  background: gold;
   margin: 6px auto;
   backface-visibility: hidden;
   -moz-transition-duration: 0.3s;
@@ -305,4 +312,35 @@ nav ul a:hover {
   display: block;
   background-color: rgba(0, 0, 0, 0.5);
   position: absolute;
+}
+.galllery-more {
+  position: relative;
+  .cented-box {
+    position: absolute;
+    top: auto;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    outline: 2px solid #fff;
+    outline-offset: 0;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+    visibility: hidden;
+  }
+  &:hover {
+    .cented-box {
+      outline: #fff solid 2px;
+      outline-offset: -20px;
+      visibility: visible;
+      background: #0000006b;
+    }
+  }
 }
