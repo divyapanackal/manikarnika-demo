@@ -9,6 +9,7 @@ module.exports = {
   output: {
     filename: "[name].bundle.js",
     path: path.resolve(__dirname, "deploy"),
+    assetModuleFilename: "images/[hash][ext][query]"
   },
   devServer: {
     contentBase: './deploy',
@@ -32,13 +33,23 @@ module.exports = {
       },
       { 
         test: /\.(?:ico|gif|png|jpg|jpeg)$/i,
-        type: 'asset/resource',
-      },
+        loader: 'file-loader',
+        options: {
+          name: "[name].[hash:6].[ext]",
+          outputPath: "images",
+          publicPath: "images",
+          emitFile: true,
+          esModule: false
+        }
+      },  
     ]
   },
-//   plugins: [
-//     new HtmlWebpackPlugin({
-//       title: "Webpack Output",
-//     }),
-//   ],
+  plugins: [
+    new HtmlWebpackPlugin({
+      template: "./src/index.html",
+      filename: "index.html",
+      inject: "body"
+    })
+  ],
+
 };
